@@ -4,7 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="reportService" class="com.bankonet.metier.ReportService">
-        <property name="reportGenerator" ref="htmlReportGenerator"/>
+        <!--Injection par setter-->
+        <!--<property name="reportGenerator" ref="htmlReportGenerator"/>-->
+
+        <!--Injection par constructeur-->
+        <constructor-arg index="0" ref="pdfReportGenerator" />
     </bean>
 
     <bean id="htmlReportGenerator" class="com.bankonet.report.HtmlReportGenerator"/>
