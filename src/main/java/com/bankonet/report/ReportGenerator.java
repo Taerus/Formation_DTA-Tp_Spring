@@ -1,6 +1,6 @@
 package com.bankonet.report;
 
 
-public abstract class ReportGenerator {
+public abstract class ReportGenerator implements IReportGenerator {
 
 }

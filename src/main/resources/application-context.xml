@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--Services-->
     <bean id="reportService" class="com.bankonet.metier.ReportService" scope="prototype">
         <!--Injection par setter-->
         <!--<property name="reportGenerator" ref="htmlReportGenerator"/>-->
@@ -11,7 +12,13 @@
         <constructor-arg index="0" ref="pdfReportGenerator" />
     </bean>
 
-    <bean id="htmlReportGenerator" class="com.bankonet.report.HtmlReportGenerator"/>
-    <bean id="pdfReportGenerator" class="com.bankonet.report.PdfReportGenerator"/>
+    <!--Report Generators-->
+    <bean id="htmlReportGenerator" class="com.bankonet.report.ReportFactory" factory-method="createReport">
+        <constructor-arg index="0" value="html" />
+    </bean>
+
+    <bean id="pdfReportGenerator" class="com.bankonet.report.ReportFactory" factory-method="createReport">
+        <constructor-arg index="0" value="pdf" />
+    </bean>
 
 </beans>
