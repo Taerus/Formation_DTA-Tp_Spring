@@ -3,4 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="reportService" class="com.bankonet.metier.ReportService">
+        <property name="reportGenerator" ref="htmlReportGenerator"/>
+    </bean>
+
+    <bean id="htmlReportGenerator" class="com.bankonet.report.HtmlReportGenerator"/>
+    <bean id="pdfReportGenerator" class="com.bankonet.report.PdfReportGenerator"/>
+
 </beans>
