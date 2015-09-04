@@ -1,7 +1,7 @@
 package com.bankonet.report;
 
 
-public class PdfReportGenerator implements IReportGenerator {
+public class PdfReportGenerator extends ReportGenerator implements IReportGenerator {
 
     @Override
     public void generate() {

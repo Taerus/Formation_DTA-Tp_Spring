@@ -1,7 +1,7 @@
 package com.bankonet.report;
 
 
-public class HtmlReportGenerator implements IReportGenerator {
+public class HtmlReportGenerator extends ReportGenerator implements IReportGenerator {
 
     @Override
     public void generate() {
