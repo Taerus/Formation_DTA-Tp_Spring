@@ -5,4 +5,6 @@ public interface IReportGenerator {
 
     public void generate();
 
+    public void generate(String author);
+
 }

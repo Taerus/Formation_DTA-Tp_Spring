@@ -8,4 +8,10 @@ public class PdfReportGenerator implements IReportGenerator {
         System.out.println("Génération d'un rapport PDF...");
     }
 
+    @Override
+    public void generate(String author) {
+        this.generate();
+        System.out.println("-> Auteur : " + author);
+    }
+
 }
