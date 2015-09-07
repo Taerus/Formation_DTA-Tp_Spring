@@ -12,7 +12,7 @@ public class BankonetMetierTest {
 
         IBankonetMetier bankonetMetier = (IBankonetMetier) context.getBean("bankonetMetier");
 
-        bankonetMetier.listClients();
+        bankonetMetier.deleteClientsWithNameContaining("john");
 
         context.close();
     }

@@ -2,14 +2,13 @@ package com.bankonet.dao;
 
 
 import com.bankonet.model.Client;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-@Repository("clientDao")
-@Scope("singleton")
+@Repository("dao")
 public class ClientDaoImpl implements IClientDao {
 
     @Override
@@ -26,13 +25,13 @@ public class ClientDaoImpl implements IClientDao {
     @Override
     public List<Client> listClients() {
         System.out.println("ClientDaoImpl.listClients");
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
     public List<Client> findClients(String keyword) {
         System.out.println("ClientDaoImpl.findClients");
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

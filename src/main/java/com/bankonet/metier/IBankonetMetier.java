@@ -8,9 +8,11 @@ import java.util.List;
 
 public interface IBankonetMetier {
     public void addClient(Client c);
-    public Client getClientById(int clientId);
+    public Client getClient(int clientId);
     public List<Client> listClients();
     public List<Client> findClients(String keyword);
     public void updateClient(Client c);
-    public void deleteClientById(int clientId);
+    public void deleteClient(int clientId);
+
+    public List<Client> deleteClientsWithNameContaining(String keyword);
 }
