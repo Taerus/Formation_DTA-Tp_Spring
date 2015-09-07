@@ -11,10 +11,14 @@ public class Client {
     public Client() {
     }
 
-    public Client(int id, String firstname, String lastname, Address address) {
+    public Client(int id, String firstname, String lastname) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
+    }
+
+    public Client(int id, String firstname, String lastname, Address address) {
+        this(id, firstname, lastname);
         this.address = address;
     }
 
