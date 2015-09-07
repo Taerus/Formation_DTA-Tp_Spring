@@ -2,10 +2,14 @@ package com.bankonet.dao;
 
 
 import com.bankonet.model.Client;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 
+@Repository("clientDao")
+@Scope("singleton")
 public class ClientDaoImpl implements IClientDao {
 
     @Override
