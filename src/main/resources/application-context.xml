@@ -28,6 +28,8 @@
     <!--Model-->
     <bean id="client" class="com.bankonet.model.Client" scope="prototype">
         <constructor-arg name="id" value="0" />
+        <constructor-arg name="login" value="jsmith" />
+        <constructor-arg name="password" value="I8neo" />
         <constructor-arg name="firstname" value="Jhon" />
         <constructor-arg name="lastname" value="Smith" />
     </bean>

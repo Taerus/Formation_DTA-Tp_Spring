@@ -3,51 +3,27 @@ package com.bankonet.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Client {
+public class Client extends Person {
 
-    private int id;
-    private String firstname;
-    private String lastname;
+    private String login;
+    private String password;
 
     @Autowired
     private Address address;
 
     public Client() {
+        super();
     }
 
-    public Client(int id, String firstname, String lastname) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public Client(int id, String login, String password, String firstname, String lastname) {
+        super(id, firstname, lastname);
+        this.login = login;
+        this.password = password;
     }
 
-    public Client(int id, String firstname, String lastname, Address address) {
-        this(id, firstname, lastname);
+    public Client(int id, String login, String password, String firstname, String lastname, Address address) {
+        this(id, login, password, firstname, lastname);
         this.address = address;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public Address getAddress() {
@@ -61,9 +37,11 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                "id=" + getId() +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + getFirstname() + '\'' +
+                ", lastname='" + getLastname() + '\'' +
                 ", address=" + address +
                 '}';
     }
