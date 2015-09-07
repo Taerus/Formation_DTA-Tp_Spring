@@ -22,7 +22,7 @@
     </bean>
 
     <!--Model-->
-    <bean id="client" class="com.bankonet.model.Client" scope="prototype" autowire="byType">
+    <bean id="client" class="com.bankonet.model.Client" scope="prototype" autowire="constructor">
         <constructor-arg name="id" value="0" />
         <constructor-arg name="firstname" value="Jhon" />
         <constructor-arg name="lastname" value="Smith" />
