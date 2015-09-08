@@ -8,6 +8,46 @@
     <context:annotation-config />
     <context:component-scan base-package="com.bankonet" />
 
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="Bankonet_PU"></property>
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" >
+            <list>
+                <value>com.bankonet.model</value>
+            </list>
+        </property>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="generateDdl" value="true"/>
+                <property name="databasePlatform" value="org.eclipse.persistence.platform.database.MySQLPlatform" />
+            </bean>
+        </property>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
+        </property>
+        <property name="jpaPropertyMap">
+            <props>
+                <prop key="eclipselink.weaving">static</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"></property>
+    </bean>
+
+
     <!--Services-->
     <bean id="reportService" class="com.bankonet.metier.ReportService" scope="prototype">
         <!--Injection par setter-->

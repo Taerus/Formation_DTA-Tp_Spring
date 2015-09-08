@@ -1,7 +1,10 @@
 package com.bankonet.metier;
 
+import com.bankonet.model.Client;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 
 public class BankonetMetierTest {
@@ -12,7 +15,19 @@ public class BankonetMetierTest {
 
         IBankonetMetier bankonetMetier = (IBankonetMetier) context.getBean("bankonetMetier");
 
-        bankonetMetier.deleteClientsWithNameContaining("john");
+        List<Client> clients = bankonetMetier.listClients();
+        System.out.println(clients.size());
+        for(Client client : clients) {
+            System.out.println(client);
+        }
+
+        clients = bankonetMetier.findClients("oyer");
+        System.out.println(clients.size());
+        for(Client client : clients) {
+            System.out.println(client);
+        }
+
+        //bankonetMetier.deleteClientsWithNameContaining("john");
 
         context.close();
     }

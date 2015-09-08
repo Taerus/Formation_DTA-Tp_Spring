@@ -4,10 +4,19 @@ version = '1.0-SNAPSHOT'
 
 repositories {
 	mavenCentral()
+    maven {
+        url 'http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo/'
+    }
 }
 
 dependencies {
     compile         'org.springframework:spring-context:4.2.1.RELEASE'
+    compile         'org.springframework:spring-orm:3.1.1.RELEASE'
+
+    compile         'org.eclipse.persistence:eclipselink:2.6.0'
+    compile         'org.eclipse.persistence:javax.persistence:2.0.0'
+    compile         'javax.validation:validation-api:1.0.0.GA'
+    compile         'mysql:mysql-connector-java:5.1.35'
 
     compile         'org.apache.logging.log4j:log4j-api:2.3'
     compile         'org.apache.logging.log4j:log4j-core:2.3'

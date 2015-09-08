@@ -4,43 +4,54 @@ package com.bankonet.dao;
 import com.bankonet.model.Client;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 
 @Repository("dao")
 public class ClientDaoImpl implements IClientDao {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public void addClient(Client c) {
-        System.out.println("ClientDaoImpl.addClient --> Client ajouté");
+        entityManager.persist(c);
     }
 
     @Override
     public Client getClientById(int clientId) {
-        System.out.println("ClientDaoImpl.getClientById");
-        return null;
+        return entityManager.find(Client.class, clientId);
     }
 
     @Override
     public List<Client> listClients() {
-        System.out.println("ClientDaoImpl.listClients");
-        return new ArrayList<>();
+        return entityManager.createQuery("SELECT c FROM Client c").getResultList();
     }
 
     @Override
     public List<Client> findClients(String keyword) {
-        System.out.println("ClientDaoImpl.findClients");
-        return new ArrayList<>();
+        Query query = entityManager.createQuery(
+                "SELECT c " +
+                        "FROM Client c " +
+                        "WHERE UPPER(c.firstname) LIKE UPPER(:filter) " +
+                        "   OR UPPER(c.lastname) LIKE UPPER(:filter)"
+        );
+        query.setParameter("filter", "%"+keyword+"%");
+
+        return query.getResultList();
     }
 
     @Override
     public void updateClient(Client c) {
-        System.out.println("ClientDaoImpl.updateClient --> Client modifié");
+        entityManager.merge(c);
     }
 
     @Override
     public void deleteClientById(int clientId) {
-        System.out.println("ClientDaoImpl.listClients --> Client supprimé");
+        Client c = entityManager.find(Client.class, clientId);
+        entityManager.remove(c);
     }
 }

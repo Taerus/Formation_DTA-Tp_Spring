@@ -3,11 +3,26 @@ package com.bankonet.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+
+@Entity
+@DiscriminatorValue("Client")
 public class Client extends Person {
 
+    @NotNull
+    @Size(min = 2, max = 16)
     private String login;
+
+    @NotNull
+    @Size(min = 6, max = 50)
     private String password;
 
+    @Embedded
     @Autowired
     private Address address;
 

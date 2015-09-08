@@ -1,6 +1,10 @@
 package com.bankonet.model;
 
 
+import javax.persistence.Embeddable;
+
+
+@Embeddable
 public class Address {
 
     private int number;
